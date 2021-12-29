@@ -1,7 +1,8 @@
-import { increment, decrement, remove } from "./counterSlice";
+import { increment, decrement } from "./counterSlice";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -21,13 +22,12 @@ export const Counter = ({ id }: { id: string }) => {
     dispatch(decrement(id));
   };
 
-  const handleRemove = () => {
-    dispatch(remove(id));
-  };
-
   return (
     <Card variant="outlined" sx={{ minWidth: 275 }}>
       <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Counter {id}
+        </Typography>
         <Typography variant="h5" component="div">
           {value || 0}
         </Typography>
@@ -48,14 +48,6 @@ export const Counter = ({ id }: { id: string }) => {
           onClick={handleDecrement}
         >
           -
-        </Button>
-        <Button
-          color="primary"
-          variant="outlined"
-          size="small"
-          onClick={handleRemove}
-        >
-          Remove
         </Button>
       </CardActions>
     </Card>
