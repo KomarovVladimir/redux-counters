@@ -14,17 +14,38 @@ function App() {
   };
 
   return (
-    <Box>
-      <Button color="primary" variant="contained" onClick={handleAddCounter}>
+    <Box
+      sx={{
+        display: "grid",
+        rowGap: 3,
+        justifyItems: "start",
+        maxWidth: 1440,
+      }}
+    >
+      <Button
+        color="primary"
+        variant="contained"
+        size="large"
+        onClick={handleAddCounter}
+      >
         Add counter
       </Button>
-      {Object.keys(counters).map((id, key: number) =>
-        (key + 1) % 4 === 0 ? (
-          <Counter {...{ key, id }} automatic />
-        ) : (
-          <Counter {...{ key, id }} />
-        )
-      )}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: 2,
+          width: "100%",
+        }}
+      >
+        {Object.keys(counters).map((id, key: number) =>
+          (key + 1) % 4 === 0 ? (
+            <Counter {...{ key, id }} automatic />
+          ) : (
+            <Counter {...{ key, id }} />
+          )
+        )}
+      </Box>
     </Box>
   );
 }

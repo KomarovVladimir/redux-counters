@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 export interface CounterState {
   counters: { [key: string]: number };
 }
@@ -11,19 +11,19 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    increment: (state, { payload }: any) => {
+    increment: (state, { payload }) => {
       state.counters[payload] += 1;
     },
-    decrement: (state, { payload }: any) => {
+    decrement: (state, { payload }) => {
       state.counters[payload] -= 1;
     },
-    addCounter: (state, { payload }: any) => {
+    addCounter: (state, { payload }) => {
       state.counters[payload] = Object.values(state.counters).reduce(
         (summ, value) => (summ += value),
         0
       );
     },
-    remove: (state, { payload }: any) => {
+    remove: (state, { payload }) => {
       delete state.counters[payload];
     },
   },
