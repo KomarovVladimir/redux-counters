@@ -18,9 +18,13 @@ function App() {
       <Button color="primary" variant="contained" onClick={handleAddCounter}>
         Add counter
       </Button>
-      {Object.keys(counters).map((id, key: number) => (
-        <Counter {...{ key, id }} />
-      ))}
+      {Object.keys(counters).map((id, key: number) =>
+        (key + 1) % 4 === 0 ? (
+          <Counter {...{ key, id }} automatic />
+        ) : (
+          <Counter {...{ key, id }} />
+        )
+      )}
     </Box>
   );
 }
